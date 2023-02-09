@@ -5,26 +5,26 @@ function durationBetweenDates(firstDate, secondDate, dimensionBetween) {
 	const calcSecondDate = new Date(secondDate);
 	const millisecondsDiff = calcSecondDate.getTime() - calcFirstDate.getTime();
 	if (dimensionBetween === 'seconds'){
-	  const secondsType = millisecondsDiff / 1000;
-	  return secondsType + ' seconds';
+		const secondsType = millisecondsDiff / 1000;
+		return secondsType + ' seconds';
 	}
 	if (dimensionBetween === 'minutes'){
 	  const minutesType = Math.ceil(millisecondsDiff / (1000 * 60));
-	  return minutesType + ' minutes';
+	return minutesType + ' minutes';
 	}
 	if (dimensionBetween === 'hours'){
 	  const hoursType = millisecondsDiff / (1000 * 3600);
-	  return hoursType + ' hours';
+	return hoursType + ' hours';
 	}
 	if (dimensionBetween === 'days'){
 	  const daysType = Math.abs(millisecondsDiff / (1000 * 3600 * 24));
-	  return daysType + ' days';
+	return daysType + ' days';
 	} else {
-	  return console.log('Not Found');
+	return console.log('Not Found');
 	}
-  }
-  console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
-  console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
+}
+console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
+console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
 
 //2
 
