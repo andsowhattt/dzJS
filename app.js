@@ -23,8 +23,24 @@ function durationBetweenDates(firstDate, secondDate, dimensionBetween) {
 	return console.log('Not Found');
 	}
 }
-console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
-console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
+//console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
+//console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
+
+//1 
+function durationBetweenDates(firstDate, secondDate, dimensionBetween) {
+	const millisecondsDiff = new Date(secondDate).getTime() - new Date(firstDate).getTime();
+	switch (dimensionBetween) {
+	  case 'seconds': return millisecondsDiff / 1000 + ' seconds';
+	  case 'minutes': return Math.ceil(millisecondsDiff / (1000 * 60)) + ' minutes';
+	  case 'hours':   return millisecondsDiff / (1000 * 3600) + ' hours';
+	  case 'days':    return Math.abs(millisecondsDiff / (1000 * 3600 * 24)) + ' days';
+	  default:        return 'Not Found';
+	}
+  }
+  console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
+  //return '86400 seconds'
+  console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
+  //return '362 days'
 
 //2
 
@@ -39,7 +55,7 @@ const optimizer = data =>
 		return acc;
 	}, {});
 const updatedPriceData = optimizer(priceData);
-console.log(updatedPriceData);
+//console.log(updatedPriceData);
 
 //3
 
@@ -51,7 +67,7 @@ function recursiveOddSumTo(number) {
 			number--;
 	return number + recursiveOddSumTo(number - 2);
 }
-console.log(recursiveOddSumTo(10))
+//console.log(recursiveOddSumTo(10))
 
 function iterativeOddSumTo(number) {
 	let sum = 0;
@@ -62,4 +78,4 @@ function iterativeOddSumTo(number) {
 	}
 	return sum;
 }
-console.log(iterativeOddSumTo(10));
+//console.log(iterativeOddSumTo(10));
