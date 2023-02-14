@@ -1,81 +1,152 @@
 //1
-
-function durationBetweenDates(firstDate, secondDate, dimensionBetween) {
-	const calcFirstDate = new Date(firstDate);
-	const calcSecondDate = new Date(secondDate);
-	const millisecondsDiff = calcSecondDate.getTime() - calcFirstDate.getTime();
-	if (dimensionBetween === 'seconds'){
-		const secondsType = millisecondsDiff / 1000;
-		return secondsType + ' seconds';
+function addThemAll(...theArgs) {
+	let total = 0;
+	for (const arg of theArgs) {
+		total += arg;
 	}
-	if (dimensionBetween === 'minutes'){
-	  const minutesType = Math.ceil(millisecondsDiff / (1000 * 60));
-	return minutesType + ' minutes';
-	}
-	if (dimensionBetween === 'hours'){
-	  const hoursType = millisecondsDiff / (1000 * 3600);
-	return hoursType + ' hours';
-	}
-	if (dimensionBetween === 'days'){
-	  const daysType = Math.abs(millisecondsDiff / (1000 * 3600 * 24));
-	return daysType + ' days';
-	} else {
-	return console.log('Not Found');
-	}
+	return total;
 }
-//console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
-//console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
+console.log(addThemAll(2,4)); 
+console.log(addThemAll(1,2,3,4)); 
+console.log(addThemAll(5,5,10));
 
-//1 
-function durationBetweenDates(firstDate, secondDate, dimensionBetween) {
-	const millisecondsDiff = new Date(secondDate).getTime() - new Date(firstDate).getTime();
-	switch (dimensionBetween) {
-	  case 'seconds': return millisecondsDiff / 1000 + ' seconds';
-	  case 'minutes': return Math.ceil(millisecondsDiff / (1000 * 60)) + ' minutes';
-	  case 'hours':   return millisecondsDiff / (1000 * 3600) + ' hours';
-	  case 'days':    return Math.abs(millisecondsDiff / (1000 * 3600 * 24)) + ' days';
-	  default:        return 'Not Found';
-	}
-  }
-  console.log(durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'));
-  //return '86400 seconds'
-  console.log(durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'));
-  //return '362 days'
 
 //2
-
-const priceData = {
-	Apples: '23.4',
-	BANANAS: '48',
-	oRAngGEs: '48.7584',
+function multiply(a) {
+	return function(b) {
+		return a * b;
+	}
 }
-const optimizer = data =>
-	Object.keys(data).reduce((acc, key) => {
-		acc[key.toLowerCase()] = data[key] = Number(data[key]).toFixed(2);
-		return acc;
-	}, {});
-const updatedPriceData = optimizer(priceData);
-//console.log(updatedPriceData);
+console.log(multiply(5)(5))
+console.log(multiply(2)(-2))
+console.log(multiply(4)(3))
+
 
 //3
-
-function recursiveOddSumTo(number) {
-	if (number <= 1)
-		return 1;
-	else
-		if (number % 2 == 0)
-			number--;
-	return number + recursiveOddSumTo(number - 2);
-}
-//console.log(recursiveOddSumTo(10))
-
-function iterativeOddSumTo(number) {
-	let sum = 0;
-	for (let i = 1; i <= number; i++) {
-		if (i % 2 !== 0) {
-			sum = sum + i;
-		}
+const movies = [
+	{
+	movieName: 'The Thing',
+	releaseYear: 1982,
+	directedBy: 'Carpenter',
+	runningTimeInMinutes: 109,
+	},
+	{
+	movieName: 'Aliens',
+	releaseYear: 1986,
+	directedBy: 'Cameron',
+	runningTimeInMinutes: 137,
+	},
+	{
+	movieName: 'Men in Black',
+	releaseYear: 1997,
+	directedBy: 'Sonnenfeld',
+	runningTimeInMinutes: 98,
+	},
+	{
+	movieName: 'Predator',
+	releaseYear: 1987,
+	directedBy: 'McTiernan',
+	runningTimeInMinutes: 107,
+	},
+	];
+	
+function byProperty(property, direction) {
+	let firstDirection = 1;
+	if(direction === '<') {
+		firstDirection = -1; 
 	}
-	return sum;
+	return function (a, b) {
+	if(a[property] < b[property]) {
+	return -1 * firstDirection;
+	}else if(a[property] > b[property]) {
+	return 1 * firstDirection;
+	}else {
+		return 0 * firstDirection; 
+	} 
 }
-//console.log(iterativeOddSumTo(10));
+}
+
+console.log(movies.sort(byProperty('releaseYear', '>')));
+//console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); 
+//console.log(movies.sort(byProperty('movieName', '>'))); 
+
+
+//4
+function detonatorTimer(delay) {
+	let timerId = setInterval(() => {
+		console.log(delay);
+		delay--
+		if (delay === 0) {
+			console.log("BOOM!");
+			clearInterval(timerId);
+		}
+		}, 1000);
+} 
+detonatorTimer(3);
+
+
+function detonatorTimer(delay) {
+	if (delay > 0) {
+	  console.log(delay);
+	  delay --;
+	  setTimeout(detonatorTimer, 1000, delay);
+	} else if(delay === 0) {
+	  console.log('BOOM!');
+	}
+}
+detonatorTimer(3);
+
+
+//5
+let me = {
+	name: 'Alina',
+	residency: 'Kyiv',
+	gender: 'female',
+	age: 27,
+	myAnimal: 'dog',
+	breed: 'corgi',
+	favoriteToy: 'slippers',
+	hobby: 'driving',
+	relax: 'Netflix',
+	defaultMood: 'war',
+	introduce() {
+	console.log(`My name is ${this.name} and I live in ${this.residency} with my ${this.breed}.`);
+	},
+	prognose() {
+	console.log(`I hope that next year I'm gonna be ${this.age+1},
+        the ${this.defaultMood} will end and my ${this.myAnimal} will stop chewing on my ${this.favoriteToy}.`);
+	},
+	describeMyWeekend(){
+	console.log(`When I have free time, I try to distract myself by ${this.hobby} or watching ${this.relax}.`);
+	}
+	}
+	
+	me.introduce();
+	me.prognose();
+	me.describeMyWeekend();
+
+
+//6
+let securedSelfIntroduce = me.introduce.bind(me);
+let securedSelfPrognose = me.prognose.bind(me);
+let securedSelfDescribeMyWeekend = me.describeMyWeekend.bind(me);
+
+setTimeout(securedSelfIntroduce, 1000);
+setTimeout(securedSelfPrognose, 2000); 
+setTimeout(securedSelfDescribeMyWeekend, 3000); 
+
+
+//7
+function someFunction(a, b) {
+    console.log(a + b);
+}
+
+function slower(func, seconds) {
+    return function() {
+        console.log("Chill out, you will get your result in " + seconds + " seconds");
+        setTimeout(() => func.apply(this, arguments), seconds * 1000);
+    }
+}
+
+let slowedSomeFunction = slower(someFunction, 5);
+slowedSomeFunction(2, 3);
