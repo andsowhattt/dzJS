@@ -74,15 +74,18 @@ console.log(movies.sort(byProperty('releaseYear', '>')));
 //4
 function detonatorTimer(delay) {
 	let timerId = setInterval(() => {
-		console.log(delay);
-		delay--
-		if (delay === 0) {
-			console.log("BOOM!");
-			clearInterval(timerId);
+		 if (delay === 0) {
+			  console.log("BOOM!");
+			  clearInterval(timerId);
 		}
-		}, 1000);
-} 
+		 else {
+			 console.log(delay)
+			 delay--;
+		 }
+	}, 1000);
+}
 detonatorTimer(3);
+
 
 
 function detonatorTimer(delay) {
