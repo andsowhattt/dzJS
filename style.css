@@ -4,22 +4,22 @@ body {
 }
 #switch__button {
 	position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	  padding: 15px 65px;
-	  font-size: 20px;
-	  background-color: #fff;
-	  border: 3px solid black;
-	  border-radius: 15px;
-	  cursor: pointer;
-	  font-weight: bold;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px 65px;
+	font-size: 20px;
+	background-color: #fff;
+	border: 3px solid black;
+	border-radius: 15px;
+	cursor: pointer;
+	font-weight: bold;
 }
-	.switch__message {
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  margin-top: 50px;
-	  transform: translateX(-50%);
-	  color: black;
+.switch__message {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 50px;
+	transform: translateX(-50%);
+	color: black;
 	}
