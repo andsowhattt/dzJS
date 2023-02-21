@@ -1,37 +1,16 @@
 "use strict";
 
-const switcher = document.getElementById('switch__button');
-const timeText = document.querySelector('.switch__message');
-const saveInfo = localStorage.getItem('buttonStatus') === 'true';
+const titles = document.querySelectorAll('h2');
+const secondSectionHeader = Array.from(titles)[1];
+console.log(secondSectionHeader);
 
-if (saveInfo) {
-	switcher.textContent = 'Turn on';
-	document.body.style.backgroundColor = '#035096';
-} else {
-	switcher.textContent = 'Turn off';
-	document.body.style.backgroundColor = '#32cd32 ';
-}
+const firstParagraph = document.querySelector('section.first-section > p');
+console.log(firstParagraph);
 
-let lastTime = localStorage.getItem('lastTime');
-if (lastTime) {
-	const lightOn = saveInfo ? false : true;
-	timeText.innerText = `Last ${ lightOn ? 'on' : 'off' }: ${ lastTime }`;
-}
 
-switcher.addEventListener('click', () => {
-	const lightOn = switcher.textContent === 'Turn off';
+const listItems = document.getElementsByTagName('li');
+const fifthItem = listItems[4];
+console.log(fifthItem);
 
-	if (lightOn) {
-		switcher.textContent = 'Turn on';
-		document.body.style.backgroundColor = '#035096';
-	} else {
-		switcher.textContent = 'Turn off';
-		document.body.style.backgroundColor = '#32cd32 ';
-	}
-
-	const now = new Date();
-	lastTime = now.toLocaleString();
-	localStorage.setItem('lastTime', lastTime);
-	localStorage.setItem('buttonStatus', lightOn);
-	timeText.innerText = `Last ${ lightOn ? 'on' : 'off' }: ${ lastTime }`;
-});
+const hatredBlock = document.getElementsByClassName('hatred-level-block')[0];
+console.log(hatredBlock);
